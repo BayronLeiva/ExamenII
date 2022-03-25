@@ -8,7 +8,7 @@ namespace Conexion.Entidades
 {
     public class Productos
     {
-        public int Codigo { get; set; }
+        public int CodigoProducto { get; set; }
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
         public int Existencia { get; set; }
@@ -19,7 +19,7 @@ namespace Conexion.Entidades
 
         public Productos(int codigo, string descripcion, decimal precio, int existencia)
         {
-            Codigo = codigo;
+            CodigoProducto = codigo;
             Descripcion = descripcion;
             Precio = precio;
             Existencia = existencia;

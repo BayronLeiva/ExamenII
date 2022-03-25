@@ -11,7 +11,7 @@ namespace Conexion.Clases
 {
     public class ProductosAcceso
     {
-        readonly string cadena = "Server=localhost; Port=3306; Database=examenii; Uid=root; Pwd= Bayron200028;";
+        readonly string cadena = "Server=localhost; Port=3306; Database=examenunidadii; Uid=root; Pwd= Bayron200028;";
 
         MySqlConnection conn;
         MySqlCommand cmd;
@@ -46,15 +46,15 @@ namespace Conexion.Clases
 
             try
             {
-                string sql = "INSERT INTO productos VALUES (@Codigo, @Dexripcion, @Precio, @Existencia);";
+                string sql = "INSERT INTO productos VALUES (@CodigoProducto, @Descripcion, @Precio, @Existencia);";
 
                 conn = new MySqlConnection(cadena);
                 conn.Open();
 
                 cmd = new MySqlCommand(sql, conn);
 
-                cmd.Parameters.AddWithValue("@Codigo", productos.Codigo);
-                cmd.Parameters.AddWithValue("@Dexripcion", productos.Descripcion);
+                cmd.Parameters.AddWithValue("@CodigoProducto", productos.CodigoProducto);
+                cmd.Parameters.AddWithValue("@Descripcion", productos.Descripcion);
                 cmd.Parameters.AddWithValue("@Precio", productos.Precio);
                 cmd.Parameters.AddWithValue("@Existencia", productos.Existencia);
 
@@ -75,15 +75,15 @@ namespace Conexion.Clases
 
             try
             {
-                string sql = "UPDATE productos SET Codigo = @Codigo, Dexripcion = @Dexripcion, Precio = @Precio, Existencia = @Existencia WHERE Codigo = @Codigo;";
+                string sql = "UPDATE productos SET CodigoProducto = @CodigoProducto, Descripcion = @Descripcion, Precio = @Precio, Existencia = @Existencia WHERE Codigo = @Codigo;";
 
                 conn = new MySqlConnection(cadena);
                 conn.Open();
 
                 cmd = new MySqlCommand(sql, conn);
 
-                cmd.Parameters.AddWithValue("@Codigo", productos.Codigo);
-                cmd.Parameters.AddWithValue("@Dexripcion", productos.Descripcion);
+                cmd.Parameters.AddWithValue("@Codigo", productos.CodigoProducto);
+                cmd.Parameters.AddWithValue("@Descripcion", productos.Descripcion);
                 cmd.Parameters.AddWithValue("@Precio", productos.Precio);
                 cmd.Parameters.AddWithValue("@Existencia", productos.Existencia);
 
@@ -104,14 +104,14 @@ namespace Conexion.Clases
 
             try
             {
-                string sql = "DELETE FROM productos WHERE Codigo = @Codigo;";
+                string sql = "DELETE FROM productos WHERE CodigoProducto = @CodigoProducto;";
 
                 conn = new MySqlConnection(cadena);
                 conn.Open();
 
                 cmd = new MySqlCommand(sql, conn);
 
-                cmd.Parameters.AddWithValue("@Codigo", codigo);
+                cmd.Parameters.AddWithValue("@CodigoProducto", codigo);
 
                 cmd.ExecuteNonQuery();
                 elimino = true;
@@ -130,20 +130,20 @@ namespace Conexion.Clases
 
             try
             {
-                string sql = "Select * from productos WHERE Codigo = @Codigo;";
+                string sql = "Select * from productos WHERE CodigoProducto = @CodigoProducto;";
 
                 conn = new MySqlConnection(cadena);
                 conn.Open();
 
                 cmd = new MySqlCommand(sql, conn);
 
-                cmd.Parameters.AddWithValue("@Codigo", codigo);
+                cmd.Parameters.AddWithValue("@CodigoProducto", codigo);
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read())
                 {
-                    productos.Codigo = Convert.ToInt32(reader["Codigo"]);
-                    productos.Descripcion = reader["Dexripcion"].ToString();
+                    productos.CodigoProducto = Convert.ToInt32(reader["CodigoProducto"]);
+                    productos.Descripcion = reader["Descripcion"].ToString();
                     productos.Precio = Convert.ToDecimal(reader["Precio"]);
                     productos.Existencia = Convert.ToInt32(reader["Existencia"]);
                 }
@@ -161,14 +161,15 @@ namespace Conexion.Clases
 
             try
             {
-                string sql = "INSERT INTO pedidos VALUES (@Codigo, @Cliente, @Cantidad, @Subtotal, @ISV, @Total);";
+                string sql = "INSERT INTO pedidos VALUES (@CodigoPedido, @CodigoProducto, @Cliente, @Cantidad, @Subtotal, @ISV, @Total);";
 
                 conn = new MySqlConnection(cadena);
                 conn.Open();
 
                 cmd = new MySqlCommand(sql, conn);
 
-                cmd.Parameters.AddWithValue("@Codigo", pedidos.Codigo);
+                cmd.Parameters.AddWithValue("@CodigoPedido", pedidos.CodigoPedido);
+                cmd.Parameters.AddWithValue("@CodigoProducto", pedidos.CodigoProducto);
                 cmd.Parameters.AddWithValue("@Cliente", pedidos.Cliente);
                 cmd.Parameters.AddWithValue("@Cantidad", pedidos.Cantidad);
                 cmd.Parameters.AddWithValue("@Subtotal", pedidos.SubTotal);

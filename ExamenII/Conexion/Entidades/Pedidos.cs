@@ -8,7 +8,9 @@ namespace Conexion.Entidades
 {
     public class Pedidos
     {
-        public int Codigo { get; set; }
+        public int CodigoPedido { get; set; }
+
+        public int CodigoProducto { get; set; }
 
         public string Cliente { get; set; }
 
@@ -26,7 +28,7 @@ namespace Conexion.Entidades
 
         public Pedidos(int codigo, string cliente, int cantidad, decimal subTotal, decimal iSV, decimal total)
         {
-            Codigo = codigo;
+            CodigoProducto = codigo;
             Cliente = cliente;
             Cantidad = cantidad;
             SubTotal = subTotal;

@@ -6,7 +6,7 @@ namespace Conexion.Clases
 {
     public class UsuariosAcceso
     {
-        readonly string cadena = "Server=localhost; Port=3306; Database=examenii; Uid=root; Pwd= Bayron200028;";
+        readonly string cadena = "Server=localhost; Port=3306; Database=examenunidadii; Uid=root; Pwd= Bayron200028;";
 
         MySqlConnection conn;
         MySqlCommand cmd;

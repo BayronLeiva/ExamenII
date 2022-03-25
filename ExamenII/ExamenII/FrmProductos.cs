@@ -99,7 +99,7 @@ namespace ExamenII
 
                 Productos productos = new Productos();
 
-                productos.Codigo = Convert.ToInt32(textBoxCodigo.Text);
+                productos.CodigoProducto = Convert.ToInt32(textBoxCodigo.Text);
                 productos.Descripcion = textBoxDescripcion.Text;
                 productos.Precio = Convert.ToDecimal(textBoxPrecio.Text);
                 productos.Existencia = Convert.ToInt32(textBoxExistencia.Text);
@@ -149,7 +149,7 @@ namespace ExamenII
             if (ProductosDWV.SelectedRows.Count > 0)
             {
                 textBoxCodigo.Text = ProductosDWV.CurrentRow.Cells["Codigo"].Value.ToString();
-                textBoxDescripcion.Text = ProductosDWV.CurrentRow.Cells["Dexripcion"].Value.ToString();
+                textBoxDescripcion.Text = ProductosDWV.CurrentRow.Cells["Descripcion"].Value.ToString();
                 textBoxPrecio.Text = ProductosDWV.CurrentRow.Cells["Precio"].Value.ToString();
                 textBoxExistencia.Text = ProductosDWV.CurrentRow.Cells["Existencia"].Value.ToString();
 

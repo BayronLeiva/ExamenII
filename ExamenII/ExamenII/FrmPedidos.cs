@@ -63,7 +63,7 @@ namespace ExamenII
             {
                 Pedidos pedidos = new Pedidos();
 
-                pedidos.Codigo = productos.Codigo;
+                pedidos.CodigoProducto = productos.CodigoProducto;
                 pedidos.Cliente = ClientetextBox2.Text;
                 pedidos.Cantidad = Convert.ToInt32(CantidadtextBox3.Text);
 
