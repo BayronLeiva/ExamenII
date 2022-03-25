@@ -19,7 +19,7 @@ namespace ExamenII
             InitializeComponent();
         }
 
-        Pedidos pedidos;
+        Pedidos pedidos = new Pedidos();
         Productos productos;
         ProductosAcceso productosAcceso = new ProductosAcceso();
 
@@ -62,13 +62,15 @@ namespace ExamenII
             if (e.KeyChar == (char)Keys.Enter && !string.IsNullOrEmpty(CantidadtextBox3.Text)) 
             {
                 Pedidos pedidos = new Pedidos();
-                
-                subTotal = productos.Precio * pedidos.Cantidad;
-                isv = subTotal * 0.15M;
-                total = subTotal + isv;
+
                 pedidos.Codigo = productos.Codigo;
                 pedidos.Cliente = ClientetextBox2.Text;
                 pedidos.Cantidad = Convert.ToInt32(CantidadtextBox3.Text);
+
+                subTotal = productos.Precio * pedidos.Cantidad;
+                isv = subTotal * 0.15M;
+                total = subTotal + isv;
+                
                 pedidos.SubTotal = subTotal;
                 pedidos.ISV = isv;
                 pedidos.Total = total;
@@ -119,5 +121,6 @@ namespace ExamenII
                 MessageBox.Show("Ingrese el nombre del cliente");
             }
         }
+
     }
 }

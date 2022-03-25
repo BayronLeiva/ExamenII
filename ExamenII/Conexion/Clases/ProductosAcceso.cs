@@ -161,19 +161,19 @@ namespace Conexion.Clases
 
             try
             {
-                string sql = "INSERT INTO pedidos VALUES (Codigo, Cliente, Cantidad, Subtotal, ISV, Total);";
+                string sql = "INSERT INTO pedidos VALUES (@Codigo, @Cliente, @Cantidad, @Subtotal, @ISV, @Total);";
 
                 conn = new MySqlConnection(cadena);
                 conn.Open();
 
                 cmd = new MySqlCommand(sql, conn);
 
-                cmd.Parameters.AddWithValue("Codigo", pedidos.Codigo);
-                cmd.Parameters.AddWithValue("Cliente", pedidos.Cliente);
-                cmd.Parameters.AddWithValue("Cantidad", pedidos.Cantidad);
-                cmd.Parameters.AddWithValue("Subtotal", pedidos.SubTotal);
-                cmd.Parameters.AddWithValue("ISV", pedidos.ISV);
-                cmd.Parameters.AddWithValue("Total", pedidos.Total);
+                cmd.Parameters.AddWithValue("@Codigo", pedidos.Codigo);
+                cmd.Parameters.AddWithValue("@Cliente", pedidos.Cliente);
+                cmd.Parameters.AddWithValue("@Cantidad", pedidos.Cantidad);
+                cmd.Parameters.AddWithValue("@Subtotal", pedidos.SubTotal);
+                cmd.Parameters.AddWithValue("@ISV", pedidos.ISV);
+                cmd.Parameters.AddWithValue("@Total", pedidos.Total);
 
                 cmd.ExecuteNonQuery();
                 inserto = true;
